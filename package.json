@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-      "start": "node server.js",
+    "start": "node server.js",
     "dev": "nodemon server.js",
-    "update-db": "node update-db.js"
+    "update-db": "node update-db.js",
+    "cron": "node cron-service.js"
   },
   "keywords": [],
   "author": "",
