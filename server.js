@@ -7,7 +7,7 @@ const axios = require("axios");
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
 const cors = require("cors");
- 
+
 require("dotenv").config();
 
 const app = express();
@@ -96,12 +96,15 @@ app.get("/api/lookup/:ip?", async (req, res) => {
     if (!ipCityDB && !ipCountryDB && !ipAsnDB) {
       return res.status(503).json({
         error: "Service unavailable",
-        message: "IP databases are not loaded. Please check server configuration.",
+        message:
+          "IP databases are not loaded. Please check server configuration.",
       });
     }
 
     // Default result structure
     const result = {
+      statusCode: 200,
+      status: "success",
       ip: ipToLookup,
       location: {
         country: "Unknown",
@@ -217,7 +220,7 @@ app.get("/ping", (req, res) => {
     status: "ok",
     message: "Server is running",
     timestamp: new Date().toISOString(),
-    uptime: `${Math.floor(process.uptime())} seconds`
+    uptime: `${Math.floor(process.uptime())} seconds`,
   });
 });
 
