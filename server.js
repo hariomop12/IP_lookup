@@ -212,6 +212,15 @@ app.get("/admin/database/status", (req, res) => {
   });
 });
 
+app.get("/ping", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    message: "Server is running",
+    timestamp: new Date().toISOString(),
+    uptime: `${Math.floor(process.uptime())} seconds`
+  });
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`IP Lookup API server running on port ${PORT}`);
